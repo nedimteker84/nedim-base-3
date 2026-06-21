@@ -7,45 +7,49 @@ const badges: Record<
   {
     name: string;
     description: string;
-    image: string;
     streak: string;
   }
 > = {
   "1": {
     name: "Bronze Builder",
     description:
-      "Awarded to Builder Pulse users who reach a 7 day onchain builder streak on Base.",
-    image: `${appUrl}/icon.png`,
-    streak: "7 days",
+      "Awarded to Builder Pulse users who reach a 7 day builder streak.",
+    streak: "7 Days",
   },
+
   "2": {
     name: "Silver Builder",
     description:
-      "Awarded to Builder Pulse users who reach a 30 day onchain builder streak on Base.",
-    image: `${appUrl}/icon.png`,
-    streak: "30 days",
+      "Awarded to Builder Pulse users who reach a 30 day builder streak.",
+    streak: "30 Days",
   },
+
   "3": {
     name: "Gold Builder",
     description:
-      "Awarded to Builder Pulse users who reach a 100 day onchain builder streak on Base.",
-    image: `${appUrl}/icon.png`,
-    streak: "100 days",
+      "Awarded to Builder Pulse users who reach a 100 day builder streak.",
+    streak: "100 Days",
   },
 };
 
-export async function GET(request: Request, context: any) {
-  const id = context.params.id;
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+
+  const id = searchParams.get("id") || "1";
+
   const badge = badges[id];
 
   if (!badge) {
-    return NextResponse.json({ error: "Badge not found" }, { status: 404 });
+    return NextResponse.json(
+      { error: "Badge not found" },
+      { status: 404 }
+    );
   }
 
   return NextResponse.json({
     name: badge.name,
     description: badge.description,
-    image: badge.image,
+    image: `${appUrl}/icon.png`,
     attributes: [
       {
         trait_type: "App",
