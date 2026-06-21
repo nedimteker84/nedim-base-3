@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
+  const appUrl = "https://nedim-base-3.vercel.app";
+
   return NextResponse.json({
     accountAssociation: {
       header: "",
@@ -10,12 +12,15 @@ export async function GET() {
 
     frame: {
       version: "1",
-      name: "Base Builder Check-In",
-      iconUrl: "https://placehold.co/512x512/png",
-      homeUrl: "https://example.com",
-      imageUrl: "https://placehold.co/1200x630/png",
-      buttonTitle: "Open App",
-      splashImageUrl: "https://placehold.co/200x200/png",
+      name: "Builder Pulse",
+      subtitle: "Daily builder streaks on Base",
+      description:
+        "Check in daily on Base, track your builder streak, and climb the leaderboard.",
+      iconUrl: `${appUrl}/favicon.ico`,
+      homeUrl: appUrl,
+      imageUrl: `${appUrl}/favicon.ico`,
+      buttonTitle: "Open Builder Pulse",
+      splashImageUrl: `${appUrl}/favicon.ico`,
       splashBackgroundColor: "#000000",
     },
   });
