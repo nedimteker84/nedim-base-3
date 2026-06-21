@@ -18,12 +18,20 @@ export async function GET() {
       subtitle: "Daily builder streaks on Base",
       description:
         "Check in daily on Base, track your builder streak, and climb the leaderboard.",
-      iconUrl: `${appUrl}/favicon.ico`,
+      iconUrl: `${appUrl}/icon.png`,
       homeUrl: appUrl,
-      imageUrl: `${appUrl}/favicon.ico`,
+      imageUrl: `${appUrl}/hero.png`,
       buttonTitle: "Open Builder Pulse",
-      splashImageUrl: `${appUrl}/favicon.ico`,
+      splashImageUrl: `${appUrl}/splash.png`,
       splashBackgroundColor: "#000000",
+      primaryCategory: "utility",
+      tags: ["base", "builder", "streaks"],
+      tagline: "Daily builder streaks on Base",
+      heroImageUrl: `${appUrl}/hero.png`,
+      ogTitle: "Builder Pulse",
+      ogDescription:
+        "Check in daily on Base, track your builder streak, and climb the leaderboard.",
+      ogImageUrl: `${appUrl}/hero.png`,
     },
   });
 }
