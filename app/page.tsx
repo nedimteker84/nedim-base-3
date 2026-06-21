@@ -1,20 +1,38 @@
 import WalletConnect from "../components/WalletConnect";
 import CheckInCard from "../components/CheckInCard";
+import LeaderboardCard from "../components/LeaderboardCard";
+import BaseDashboard from "../components/BaseDashboard";
+import BadgeCard from "../components/BadgeCard";
+import FarcasterReady from "../components/FarcasterReady";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6">
-      <h1 className="text-4xl font-bold mb-4 text-center">
-        Base Builder Check-In
-      </h1>
+    <main className="min-h-screen bg-black text-white flex flex-col items-center px-6 py-12">
+      <FarcasterReady />
 
-      <p className="text-gray-400 text-center max-w-md mb-8">
-        Build your streak on Base. Check in daily, earn badges and climb the leaderboard.
-      </p>
+      <section className="flex w-full max-w-sm flex-col items-center text-center">
+        <p className="mb-3 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs text-blue-300">
+          Built on Base
+        </p>
 
-      <WalletConnect />
+        <h1 className="text-4xl font-bold mb-4">
+          Builder Pulse
+        </h1>
 
-      <CheckInCard />
+        <p className="text-gray-400 mb-8">
+          Daily builder streaks on Base. Check in daily, track progress and climb the leaderboard.
+        </p>
+
+        <WalletConnect />
+
+        <CheckInCard />
+
+        <LeaderboardCard />
+
+        <BadgeCard />
+
+        <BaseDashboard />
+      </section>
     </main>
   );
 }

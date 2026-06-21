@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useAccount, useReadContract, useWriteContract } from "wagmi";
 import {
   DAILY_CHECKIN_CONTRACT,
@@ -18,7 +19,12 @@ function hasCheckedInToday(lastCheckIn: number) {
 }
 
 export default function CheckInCard() {
+  const [mounted, setMounted] = useState(false);
   const { address, isConnected } = useAccount();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const {
     data: stats,
@@ -30,11 +36,19 @@ export default function CheckInCard() {
     functionName: "getStats",
     args: address ? [address] : undefined,
     query: {
-      enabled: Boolean(address),
+      enabled: mounted && Boolean(address),
     },
   });
 
   const { writeContract, isPending } = useWriteContract();
+
+  if (!mounted) {
+    return (
+      <div className="mt-8 w-full max-w-sm rounded-2xl border border-gray-800 bg-gray-950 p-5 text-center">
+        <p className="text-gray-500">Loading check-in status...</p>
+      </div>
+    );
+  }
 
   const streak = stats ? Number(stats[0]) : 0;
   const lastCheckIn = stats ? Number(stats[1]) : 0;
