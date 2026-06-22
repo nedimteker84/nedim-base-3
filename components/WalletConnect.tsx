@@ -1,21 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { sdk } from "@farcaster/miniapp-sdk";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
-
-function isFarcasterEnvironment() {
-  if (typeof window === "undefined") return false;
-
-  const url = window.location.href.toLowerCase();
-  const referrer = document.referrer.toLowerCase();
-
-  return (
-    url.includes("farcaster") ||
-    url.includes("warpcast") ||
-    referrer.includes("farcaster") ||
-    referrer.includes("warpcast")
-  );
-}
 
 function shortAddress(address: string) {
   return `${address.slice(0, 6)}...${address.slice(-4)}`;
@@ -24,42 +11,39 @@ function shortAddress(address: string) {
 export default function WalletConnect() {
   const [mounted, setMounted] = useState(false);
   const [isMiniApp, setIsMiniApp] = useState(false);
-  const [autoConnectTried, setAutoConnectTried] = useState(false);
+  const [connectTried, setConnectTried] = useState(false);
 
-  const { address, isConnected, connector } = useAccount();
+  const { address, isConnected } = useAccount();
   const { connect, connectors, isPending } = useConnect();
   const { disconnect } = useDisconnect();
 
   useEffect(() => {
-    setMounted(true);
-    setIsMiniApp(isFarcasterEnvironment());
+    async function init() {
+      setMounted(true);
+
+      try {
+        const context = await sdk.context;
+        setIsMiniApp(Boolean(context));
+      } catch {
+        setIsMiniApp(false);
+      }
+    }
+
+    init();
   }, []);
 
   useEffect(() => {
-    if (!mounted || !isMiniApp || isConnected || autoConnectTried) return;
+    if (!mounted || !isMiniApp || isConnected || connectTried) return;
 
     const farcasterConnector = connectors.find((item) =>
       item.id.toLowerCase().includes("farcaster")
     );
 
-    if (farcasterConnector) {
-      setAutoConnectTried(true);
-      connect({ connector: farcasterConnector });
-    }
-  }, [mounted, isMiniApp, isConnected, autoConnectTried, connectors, connect]);
+    if (!farcasterConnector) return;
 
-  useEffect(() => {
-    if (!mounted || !isMiniApp || !isConnected || !connector) return;
-
-    const isFarcasterConnector = connector.id
-      .toLowerCase()
-      .includes("farcaster");
-
-    if (!isFarcasterConnector) {
-      disconnect();
-      setAutoConnectTried(false);
-    }
-  }, [mounted, isMiniApp, isConnected, connector, disconnect]);
+    setConnectTried(true);
+    connect({ connector: farcasterConnector });
+  }, [mounted, isMiniApp, isConnected, connectTried, connectors, connect]);
 
   if (!mounted) {
     return (
@@ -100,15 +84,24 @@ export default function WalletConnect() {
     return (
       <div className="flex flex-col items-center gap-3">
         <button
-          disabled
-          className="rounded-xl bg-blue-600 px-6 py-3 font-semibold opacity-50"
+          onClick={() => {
+            const farcasterConnector = connectors.find((item) =>
+              item.id.toLowerCase().includes("farcaster")
+            );
+
+            if (farcasterConnector) {
+              connect({ connector: farcasterConnector });
+            }
+          }}
+          disabled={isPending}
+          className="rounded-xl bg-blue-600 px-6 py-3 font-semibold hover:bg-blue-700 disabled:opacity-50"
         >
-          Connecting in-app wallet...
+          {isPending ? "Connecting..." : "Connect Farcaster Wallet"}
         </button>
 
         <p className="max-w-xs text-center text-xs text-gray-500">
-          Farcaster will use your in-app wallet. Check-in still requires a Base
-          transaction approval.
+          Farcaster uses the in-app wallet when supported. Check-in still
+          requires a Base transaction approval.
         </p>
       </div>
     );
