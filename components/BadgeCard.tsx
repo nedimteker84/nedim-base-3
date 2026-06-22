@@ -13,7 +13,7 @@ const badges = [
   {
     id: 1,
     name: "Bronze Builder",
-    streak: 7,
+    streak: 1,
     icon: "🥉",
   },
   {
