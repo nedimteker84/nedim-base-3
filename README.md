@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Builder Pulse
 
-## Getting Started
+Builder Pulse is a Base-native mini app for daily builder check-ins, onchain streak tracking, leaderboard visibility, and soulbound builder badges.
 
-First, run the development server:
+## Live App
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+https://nedim-base-3.vercel.app
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## GitHub
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+https://github.com/nedimteker84/nedim-base-3
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What It Does
 
-## Learn More
+Builder Pulse lets users connect a wallet, check in once per UTC day, build a daily streak, appear on a leaderboard, and claim soulbound ERC1155 builder badges after reaching milestone streaks.
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Daily onchain check-in on Base
+- UTC-based daily reset
+- Streak tracking
+- Leaderboard for active builders
+- Soulbound ERC1155 badge system
+- Bronze badge at 7 days
+- Silver badge at 30 days
+- Gold badge at 100 days
+- Farcaster Mini App support
+- Base App compatible mobile-first UI
+- Vercel deployment
+- GitHub-based development flow
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- wagmi
+- viem
+- Farcaster Mini App connector
+- Base Mainnet
+- Solidity
+- ERC1155 soulbound badge contract
+- Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contracts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Daily Check-In Contract:
+
+```text
+0xCaaD6d9b2C73a9f30cDd79aC85AEb7f423cD04D2
