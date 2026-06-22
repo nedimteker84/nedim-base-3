@@ -10,10 +10,6 @@ https://nedim-base-3.vercel.app
 
 https://github.com/nedimteker84/nedim-base-3
 
-## What It Does
-
-Builder Pulse lets users connect a wallet, check in once per UTC day, build a daily streak, appear on a leaderboard, and claim soulbound ERC1155 builder badges after reaching milestone streaks.
-
 ## Features
 
 - Daily onchain check-in on Base
@@ -27,7 +23,6 @@ Builder Pulse lets users connect a wallet, check in once per UTC day, build a da
 - Farcaster Mini App support
 - Base App compatible mobile-first UI
 - Vercel deployment
-- GitHub-based development flow
 
 ## Tech Stack
 
