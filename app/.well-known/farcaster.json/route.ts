@@ -32,12 +32,8 @@ export async function GET() {
       ogDescription:
         "Daily Base check-ins, builder streaks, leaderboard rankings, and soulbound NFT badges.",
       ogImageUrl: `${appUrl}/hero.png`,
-      castShareUrl:
-        "https://warpcast.com/~/compose?text=I%20am%20building%20my%20daily%20Base%20streak%20on%20Builder%20Pulse&embeds[]=https%3A%2F%2Fnedim-base-3.vercel.app",
-      screenshotUrls: [
-        `${appUrl}/hero.png`,
-        `${appUrl}/splash.png`,
-      ],
+      castShareUrl: appUrl,
+      screenshotUrls: [`${appUrl}/hero.png`, `${appUrl}/splash.png`],
     },
   });
 }
