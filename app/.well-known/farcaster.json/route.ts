@@ -17,7 +17,7 @@ export async function GET() {
       name: "Builder Pulse",
       subtitle: "Daily builder streaks on Base",
       description:
-        "Check in daily on Base, track your builder streak, and climb the leaderboard.",
+        "Check in daily on Base, track your builder streak, earn soulbound badges, and climb the leaderboard.",
       iconUrl: `${appUrl}/icon.png`,
       homeUrl: appUrl,
       imageUrl: `${appUrl}/hero.png`,
@@ -30,8 +30,14 @@ export async function GET() {
       heroImageUrl: `${appUrl}/hero.png`,
       ogTitle: "Builder Pulse",
       ogDescription:
-        "Check in daily on Base, track your builder streak, and climb the leaderboard.",
+        "Daily Base check-ins, builder streaks, leaderboard rankings, and soulbound NFT badges.",
       ogImageUrl: `${appUrl}/hero.png`,
+      castShareUrl:
+        "https://warpcast.com/~/compose?text=I%20am%20building%20my%20daily%20Base%20streak%20on%20Builder%20Pulse&embeds[]=https%3A%2F%2Fnedim-base-3.vercel.app",
+      screenshotUrls: [
+        `${appUrl}/hero.png`,
+        `${appUrl}/splash.png`,
+      ],
     },
   });
 }
