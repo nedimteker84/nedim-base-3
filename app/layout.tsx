@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "Builder Pulse",
   description:
     "Check in daily on Base, track your builder streak, and climb the leaderboard.",
+  other: {
+    "base:app_id": "6a2d562c1fb8d6ce204da3ff",
+  },
   openGraph: {
     title: "Builder Pulse",
     description:
