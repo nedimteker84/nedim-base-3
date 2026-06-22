@@ -1,45 +1,32 @@
-# Builder Pulse
-
-Builder Pulse is a Base-native mini app for daily builder check-ins, onchain streak tracking, leaderboard visibility, and soulbound builder badges.
-
-## Live App
-
-https://nedim-base-3.vercel.app
-
-## GitHub
-
-https://github.com/nedimteker84/nedim-base-3
-
-## Features
-
-- Daily onchain check-in on Base
-- UTC-based daily reset
-- Streak tracking
-- Leaderboard for active builders
-- Soulbound ERC1155 badge system
-- Bronze badge at 7 days
-- Silver badge at 30 days
-- Gold badge at 100 days
-- Farcaster Mini App support
-- Base App compatible mobile-first UI
-- Vercel deployment
-
-## Tech Stack
-
-- Next.js App Router
-- TypeScript
-- Tailwind CSS
-- wagmi
-- viem
-- Farcaster Mini App connector
-- Base Mainnet
-- Solidity
-- ERC1155 soulbound badge contract
-- Vercel
-
 ## Contracts
 
-Daily Check-In Contract:
+### Daily Check-In Contract
 
 ```text
 0xCaaD6d9b2C73a9f30cDd79aC85AEb7f423cD04D2
+```
+
+### Builder Pulse Badges Contract
+
+```text
+0xb7D2Faf929A41d00F2DBdf3045a272A77D6b0Bfa
+```
+
+## Badge Milestones
+
+- Bronze Builder → 7 day streak
+- Silver Builder → 30 day streak
+- Gold Builder → 100 day streak
+
+## Deployment
+
+- Frontend: Vercel
+- Network: Base Mainnet
+- Mobile Support: Base App
+- Farcaster Mini App Ready
+
+## Author
+
+Nedim Teker
+
+Built for the Base Builder ecosystem.
